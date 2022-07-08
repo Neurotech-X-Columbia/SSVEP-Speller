@@ -4,6 +4,21 @@ from letters import Letters
 flickies = []
 
 def addFlicky(typ, screen):
+    '''
+    Adds a flicky- a box that flashes on and off- to the screen
+
+    Parameters
+    ----------
+    typ : int
+        1 through 5. It deterimines the location of the boxes
+    screen : pygame.display
+        The screen to display the UI.
+
+    Returns
+    -------
+    None.
+
+    '''
     w, h = screen.get_size()
     x, y = determineLocation(typ, w, h, 200)
        
@@ -11,17 +26,43 @@ def addFlicky(typ, screen):
     flickies.append(f)
 
 def drawLetters(option, index, screen):
+    '''
+    This method is responsible for placing the letters in the boxes. 
+
+    Parameters
+    ----------
+    option : int
+        The ındex of the group of letters to be usıng..
+    index : int
+        The group of letters to draw.
+    screen : pygame.display
+        The screen where everythıng ıs dısplayed.
+
+    Returns
+    -------
+    Boolean
+        Just a method to check whether letters is valid. 
+
+    '''
     w, h = screen.get_size()
     locations = allLocations(w, h, 200)
     
     letters = Letters(option, index, locations)
     letters.draw(screen)
+    return letters.isValid()
+    
+    
 
 def process():
+    '''
+    Adds 1 to each flickies clock 
+
+    '''
     for f in flickies:
         f.process()
     
 def drawFlickies(screen):
+    
     for f in flickies:
         f.draw(screen)
         

@@ -11,7 +11,9 @@ def letters(l):
     text = font.render(l, True, (0, 255, 0))
     return text
 
-COLORS = [square(0), square(1)]
+COLORS = [square(0), square(1)] #first square is black like the rest 
+                                #of the screen, while the other is white
+                                #this is what produces the flashes.
 
 class Flicky(object):
     def __init__(self, x, y, typ):
@@ -24,13 +26,29 @@ class Flicky(object):
         self.round = 0
     
     def process(self):
+        '''
+        This updates the clock by one to allow coms alternate between black and white
+        
+        '''
         self.clock = self.clock + 1
         self.comDriver()
     
     def draw(self, screen):
+        '''
+        Draws a white or black box on the screen at the position x, y
+        
+        '''
         screen.blit(COLORS[self.img_index], (self.x, self.y))
     
-    def comDriver(self):   
+    def comDriver(self):
+        '''
+        This method sets the frequency given the type. 
+
+        Returns
+        -------
+        None.
+
+        '''
         if self.typ == 1:
             self.com1();
         elif self.typ == 2:
@@ -43,6 +61,16 @@ class Flicky(object):
             self.com5()
     
     def com1(self):
+        '''
+        This method alternates between two images, a blank image. 
+        It changes image 1 after 5 seconds then changes image 2 after 4. 
+        From here, the frequency can be calculated. 
+
+        Returns
+        -------
+        None.
+
+        '''
         if self.img_index == 1 and self.clock >= 5:
             self.clock = 0
             self.img_index = 0
