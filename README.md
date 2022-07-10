@@ -11,4 +11,5 @@ We use the Conda open source package management system. The installation directi
 1. Clone this repo
 2. Run `conda env -f environment.yml`
 3. Verify the environment was installed with `conda info --envs`
+4. Activate the environment with `conda activate speller`
 
