@@ -57,6 +57,10 @@ class Letters(object):
         if self.letters == []:
             return False
         return True
+    
+    def getLetters(self):
+        print(self.letters)
+        return self.letters
         
     def draw(self, screen):
         '''
@@ -88,6 +92,7 @@ class Letters(object):
                 j+= 52
             
             i += 1
+        
             
             
             

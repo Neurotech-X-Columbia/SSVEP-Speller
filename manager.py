@@ -49,7 +49,7 @@ def drawLetters(option, index, screen):
     
     letters = Letters(option, index, locations)
     letters.draw(screen)
-    return letters.isValid()
+    return letters.getLetters()
     
     
 
