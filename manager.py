@@ -29,6 +29,7 @@ def addFlicky(typ, screen):
 
 def drawLetters(option, index, screen):
 
+    '''
     This method is responsible for placing the letters in the boxes. 
 
     Parameters

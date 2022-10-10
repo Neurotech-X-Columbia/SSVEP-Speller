@@ -1,4 +1,4 @@
-import pygame #@UnusedImport
+import pygame
 from manager import addFlicky, drawLetters, process, drawFlickies
 
 
@@ -54,10 +54,11 @@ while done==False and isValid == True:
         
     
     screen.fill((0,0,0))
-    clock.tick(60) # 16 ms between frames ~ 60FPS
+    #clock.tick(60) # 16 ms between frames ~ 60FPS
+    clock.tick(137) # 7ms between frames
     #QUESTION: If we add more flickies does this change?
     process()
-    
+
     #this is the function in python that calls the pygame.blit method to draw the flicky  
     drawFlickies(screen)
     

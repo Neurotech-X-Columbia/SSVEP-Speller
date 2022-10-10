@@ -67,7 +67,7 @@ class Flicky(object):
     def com1(self):
         '''
         This method alternates between two images, a blank image. 
-        It changes image 1 after 5 seconds then changes image 2 after 4. 
+        It changes image1 after 5 seconds then changes image2 after 4. 
         From here, the frequency can be calculated. 
 
         Returns
@@ -75,24 +75,6 @@ class Flicky(object):
         None.
 
         '''
-        if self.img_index == 1 and self.clock >= 5:
-            self.clock = 0
-            self.img_index = 0
-        elif self.img_index == 0 and self.clock >= 4:
-            self.clock = 0
-            self.img_index = 1
-            self.round = 1 if self.round == 0 else 0
-            
-    def com2(self):
-        if self.img_index == 1 and self.clock >= 4:
-            self.clock = 0
-            self.img_index = 0
-        elif self.img_index == 0 and self.clock >= 4:
-            self.clock = 0
-            self.img_index = 1
-            self.round = 1 if self.round == 0 else 0
-    
-    def com3(self):
         if self.img_index == 1 and self.clock >= 4:
             self.clock = 0
             self.img_index = 0
@@ -100,15 +82,66 @@ class Flicky(object):
             self.clock = 0
             self.img_index = 1
             self.round = 1 if self.round == 0 else 0
+            #round is here in case we need to change the variations of 1s and 0s slightly
+            
+    def com2(self):
+        if self.round ==0:
+            if self.img_index == 1 and self.clock >= 3:
+                self.clock = 0
+                self.img_index = 0
+            elif self.img_index == 0 and self.clock >= 3:
+                self.clock = 0
+                self.img_index = 1
+                self.round = 1 if self.round == 0 else 0
+        else:
+            if self.img_index == 1 and self.clock >= 4:
+                self.clock = 0
+                self.img_index = 0
+            elif self.img_index == 0 and self.clock >= 3:
+                self.clock = 0
+                self.img_index = 1
+                self.round = 1 if self.round == 0 else 0
+
+    def com3(self):
+        if self.round ==0:
+            if self.img_index == 1 and self.clock >= 3:
+                self.clock = 0
+                self.img_index = 0
+            elif self.img_index == 0 and self.clock >= 3:
+                self.clock = 0
+                self.img_index = 1
+                self.round = 1 if self.round == 0 else 0
+        else:
+            if self.img_index == 1 and self.clock >= 3:
+                self.clock = 0
+                self.img_index = 0
+            elif self.img_index == 0 and self.clock >= 2:
+                self.clock = 0
+                self.img_index = 1
+                self.round = 1 if self.round == 0 else 0
     
     def com4(self):
-        if self.round == 0:
-            self.com1()
+        if self.round ==0:
+            if self.img_index == 1 and self.clock >= 4:
+                self.clock = 0
+                self.img_index = 0
+            elif self.img_index == 0 and self.clock >= 3:
+                self.clock = 0
+                self.img_index = 1
+                self.round = 1 if self.round == 0 else 0
         else:
-            self.com2()
+            if self.img_index == 1 and self.clock >= 3:
+                self.clock = 0
+                self.img_index = 0
+            elif self.img_index == 0 and self.clock >= 3:
+                self.clock = 0
+                self.img_index = 1
+                self.round = 1 if self.round == 0 else 0
     
     def com5(self):
-        if self.round == 0:
-            self.com2()
-        else:
-            self.com3()
+        if self.img_index == 1 and self.clock >= 3:
+            self.clock = 0
+            self.img_index = 0
+        elif self.img_index == 0 and self.clock >= 3:
+            self.clock = 0
+            self.img_index = 1
