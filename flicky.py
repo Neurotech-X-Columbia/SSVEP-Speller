@@ -14,6 +14,10 @@ def letters(l):
 COLORS = [square(0), square(1)]
 
 class Flicky(object):
+    '''
+    The main things to observe here are the coms that determine the frequency by 
+    determining the count after which to switch from a white to a black box. 
+    '''
     def __init__(self, x, y, typ):
         self.x = x
         self.y = y
