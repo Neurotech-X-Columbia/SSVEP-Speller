@@ -5,18 +5,20 @@ flickies = []
 
 def addFlicky(typ, screen):
     '''
-    this function adds a flicky object to a list. 
+
+    Adds a flicky- a box that flashes on and off- to the screen
 
     Parameters
     ----------
-    typ : integer
-        This determines where the flicky would be.
-    screen : pygame.Screen
-        this is the pygame screen where we display everything..
+    typ : int
+        1 through 5. It deterimines the location of the boxes
+    screen : pygame.display
+        The screen to display the UI.
 
     Returns
     -------
-    None
+    None.
+
 
     '''
     w, h = screen.get_size()
@@ -26,21 +28,23 @@ def addFlicky(typ, screen):
     flickies.append(f)
 
 def drawLetters(option, index, screen):
-    '''
-    This function draws select letters on a screen. 
+
+    This method is responsible for placing the letters in the boxes. 
 
     Parameters
     ----------
-    option : integer
-        this is the first index of a list of list
-    index : integer
-        this is the second index in the list of lists of letters
+    option : int
+        The ındex of the group of letters to be usıng..
+    index : int
+        The group of letters to draw.
     screen : pygame.display
-        The pygame screen
+        The screen where everythıng ıs dısplayed.
 
     Returns
     -------
-    None.
+    Boolean
+        Just a method to check whether letters is valid. 
+
 
     '''
     w, h = screen.get_size()
@@ -48,14 +52,19 @@ def drawLetters(option, index, screen):
     
     letters = Letters(option, index, locations)
     letters.draw(screen)
+    return letters.getLetters()
+    
+    
 
 def process():
     '''
+
     Updates the count as a way to determine the frequency 
 
     Returns
     -------
     None.
+
 
     '''
     for f in flickies:
@@ -75,6 +84,7 @@ def drawFlickies(screen):
     None.
 
     '''
+
     for f in flickies:
         f.draw(screen)
         
