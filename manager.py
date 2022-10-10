@@ -5,6 +5,7 @@ flickies = []
 
 def addFlicky(typ, screen):
     '''
+
     Adds a flicky- a box that flashes on and off- to the screen
 
     Parameters
@@ -18,6 +19,7 @@ def addFlicky(typ, screen):
     -------
     None.
 
+
     '''
     w, h = screen.get_size()
     x, y = determineLocation(typ, w, h, 200)
@@ -26,7 +28,7 @@ def addFlicky(typ, screen):
     flickies.append(f)
 
 def drawLetters(option, index, screen):
-    '''
+
     This method is responsible for placing the letters in the boxes. 
 
     Parameters
@@ -43,6 +45,7 @@ def drawLetters(option, index, screen):
     Boolean
         Just a method to check whether letters is valid. 
 
+
     '''
     w, h = screen.get_size()
     locations = allLocations(w, h, 200)
@@ -55,18 +58,64 @@ def drawLetters(option, index, screen):
 
 def process():
     '''
-    Adds 1 to each flickies clock 
+
+    Updates the count as a way to determine the frequency 
+
+    Returns
+    -------
+    None.
+
 
     '''
     for f in flickies:
         f.process()
     
 def drawFlickies(screen):
+    '''
     
+
+    Parameters
+    ----------
+    screen : pygame.display
+        This calls the function that calls Pygame's screen.blit..
+
+    Returns
+    -------
+    None.
+
+    '''
+
     for f in flickies:
         f.draw(screen)
         
 def determineLocation(typ, w, h, A):
+    '''
+    
+
+    Parameters
+    ----------
+    typ : integer
+        to determine the location of the box..
+    w : integer
+        width of screen.
+    h : integer
+        height of screen.
+    A : integer
+        width of box..
+
+    Raises
+    ------
+    ValueError
+        DESCRIPTION.
+
+    Returns
+    -------
+    x : integer
+        x-location.
+    y : integer
+        y-location.
+
+    '''
     x, y = 0, 0
     
     if typ == 1:
