@@ -9,7 +9,7 @@ pygame.display.set_caption("pySSVEP")
 done = False
 clock = pygame.time.Clock()
 
-#this calls the method in the manager class to add an Object called Flicky to a list
+# this calls the method in the manager class to add an Object called Flicky to a list
 # a flicky is a box that blinks. 
 addFlicky(1, screen)
 addFlicky(2, screen)
@@ -27,43 +27,37 @@ user_input_store = []
 # Things to do: - Store the user input into a list, return to the original screen. 
 
 isValid = True
-while done==False and isValid == True:
-
-    
+while not done and isValid:
     for event in pygame.event.get():
         prev_user_input = user_input
+
         if (event.type == pygame.KEYUP) or (event.type == pygame.KEYDOWN):
-            if (event.key == pygame.K_ESCAPE):
+            if event.key == pygame.K_ESCAPE:
                 done = True
+
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
                 print('Here')
-                #change text
-                #userInput ıs a number
-                #draws only the boxes
+                # change text
+                # userInput is a number
+                # draws only the boxes
                 
                 option += 1
                 index = start_usr_input + user_input
-                start_usr_input = (option)*user_input*3
-                    
-              
+                start_usr_input = option*user_input*3
         
         if event.type == pygame.QUIT:
             done = True
-        
-        
-    
-    screen.fill((0,0,0))
-    #clock.tick(60) # 16 ms between frames ~ 60FPS
-    clock.tick(137) # 7ms between frames
-    #QUESTION: If we add more flickies does this change?
+
+    screen.fill((0, 0, 0))
+    # clock.tick(60) # 16 ms between frames ~ 60FPS
+    clock.tick(137)  # 7ms between frames
+    # QUESTION: If we add more flickies does this change?
     process()
 
-    #this is the function in python that calls the pygame.blit method to draw the flicky  
+    # this is the function in python that calls the pygame.blit method to draw the flicky
     drawFlickies(screen)
-    
 
-    
     if option == 2:
         result = drawLetters(option, index, screen)[user_input]
     elif option < 3:

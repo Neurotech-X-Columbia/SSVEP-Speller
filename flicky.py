@@ -1,19 +1,23 @@
 import pygame
 
+
 def square(flag, w=200, h=200):
     square = pygame.Surface((w, h))
     c = (0, 0, 0) if flag else (255, 255, 255)
     square.fill(c)
     return square
 
+
 def letters(l):
     font = pygame.font.SysFont('arial', 20)
     text = font.render(l, True, (0, 255, 0))
     return text
 
-COLORS = [square(0), square(1)] #first square is black like the rest 
-                                #of the screen, while the other is white
-                                #this is what produces the flashes.
+
+COLORS = [square(0), square(1)]  # first square is black like the rest
+                                 # of the screen, while the other is white
+                                 # this is what produces the flashes.
+
 
 class Flicky(object):
     '''
