@@ -15,32 +15,35 @@ class Headset:
         self.board = None
 
     def initialize(self):
-        params = BrainFlowInputParams()
-        params.serial_port = self.serial_port
-        self.board = BoardShim(self.bid, params)
-        self.board.disable_board_logger()
-        self.drows = self.board.get_eeg_channels(self.bid)
+        # params = BrainFlowInputParams()
+        # params.serial_port = self.serial_port
+        # self.board = BoardShim(self.bid, params)
+        # self.board.disable_board_logger()
+        # self.drows = self.board.get_eeg_channels(self.bid)
+        print("Ready to start data stream.")
         self.initialized = True
 
     def start_stream(self):
-        if not self.initialized:
-            print("Cannot start stream before initializing headset.")
-            return
-
-        self.board.prepare_session()
-        while not self.board.is_prepared():
-            sleep(.5)
-        self.board.start_stream(self.buf_size)
-        sleep(2)  # wait for stream to stabilize
+        # if not self.initialized:
+        #     print("Cannot start stream before initializing headset.")
+        #     return
+        #
+        # self.board.prepare_session()
+        # while not self.board.is_prepared():
+        #     sleep(.5)
+        # self.board.start_stream(self.buf_size)
+        # sleep(2)  # wait for stream to stabilize
+        print("Data stream started.")
         self.stream_open = True
 
     def end_stream(self):
-        self.board.stop_stream()
-        self.board.release_session()
+        # self.board.stop_stream()
+        # self.board.release_session()
         self.stream_open = False
 
     def collect(self):
-        return self.board.get_current_board_data()[self.drows[0]: self.drows[-1]+1]
+        return
+        # return self.board.get_current_board_data()[self.drows[0]: self.drows[-1]+1]
 
 
 class Processor:
