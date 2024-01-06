@@ -1,3 +1,4 @@
+"""Websockets used for communciation with Unity GUI"""
 import asyncio
 import websockets
 
