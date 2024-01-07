@@ -3,21 +3,19 @@ import mne.preprocessing
 import numpy as np
 import os
 
-from scipy.signal import butter, filtfilt
+from scipy.signal import ellip, sosfiltfilt
 
 cwd = os.getcwd()
-sesname = "session_01-04-24_52872"
+sesname = "session_01-07-24_520725"
 dpath = os.path.join(os.getcwd(), "Data", sesname, "data.csv")
 dtable = np.loadtxt(dpath)
 
 Fs = 250
 T = 1 / Fs
 
-# Best channels: 7, 8
-# Bad channels: 2, 6
-channels = [5, 8]
-tstart = 10  # seconds
-tcutoff = 60  # seconds
+channels = [1, 6, 7]
+tstart = 35  # seconds
+tcutoff = 75  # seconds
 
 sstart = int(tstart * Fs)
 scutoff = int(tcutoff * Fs)
@@ -31,15 +29,16 @@ truncnorm = normavg[sstart + 1: scutoff]
 L = len(truncnorm)
 tvec = np.arange(0, L) * T
 
-# Zero-phase Bandpass FIR Filter (5-50 Hz 80 dB attenuation)
-SbF1, PbF1, PbF2, SbF2 = 5, 5.5, 50, 50.5
+# Zero-phase Bandpass FIR Filter (5-30 Hz 80 dB attenuation)
+SbF1, PbF1, PbF2, SbF2 = 5, 5.5, 30, 30.5
 SbAtt, PbRipple = 80, 1
 
-b, a = butter(N=10, Wn=[PbF1, PbF2], btype='band', fs=Fs)
+sos = ellip(10, PbRipple, SbAtt, [PbF1, PbF2], 'bandpass',
+            output='sos', fs=Fs, )
 
 # Processing (Truncated signal for PSD, full signal for STFT)
-filtavgtrunc = filtfilt(b, a, truncnorm)
-filtavg = filtfilt(b, a, normavg[sstart + 1:])
+filtavgtrunc = sosfiltfilt(sos, truncnorm)
+filtavg = sosfiltfilt(sos, normavg[sstart + 1:])
 
 # Plot normalized channel average
 plt.figure()

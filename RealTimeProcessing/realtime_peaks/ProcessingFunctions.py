@@ -6,7 +6,7 @@ from scipy.signal import butter, filtfilt
 
 def find_peak(data, fs=250, target_freqs=(8, 12, 18), threshold=1.5):
     """Accepts data and returns peak frequency if top magnitude is strongly within threshold Hz"""
-    channels = np.array([7])
+    channels = np.array([7, 8])
 
     # Prepare data
     data = data[channels-1, :]

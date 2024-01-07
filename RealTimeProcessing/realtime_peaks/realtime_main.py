@@ -41,7 +41,7 @@ if __name__ == '__main__':
     serial_port = 'COM3'
     board_id = BoardIds.CYTON_BOARD
 
-    states = ['8 Hz', '12 Hz', '18 Hz', 'No stimulus (weak peak)', 'No stimulus (wrong peak)']
+    states = ['12 Hz', '15 Hz', '18 Hz', 'No stimulus (weak peak)', 'No stimulus (wrong peak)']
     default = 'No stimulus (weak peak)'
 
     # Tuple of processing functions to apply to every chunk. Should accept data and return state
